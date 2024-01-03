@@ -75,7 +75,6 @@ def train(args):
         vertex=args.vertex,
         # reward_weight=args.reward_weight,
         reward_scale=args.reward_scale,
-        list_last_vertex=[],
         n_env=1,
         patient_ID=args.patient_ID
     )
@@ -120,7 +119,7 @@ if __name__ == "__main__":
     # 创建一个参数解析实例
     parser = argparse.ArgumentParser()
     # 添加参数解析
-    parser.add_argument("-vertex", nargs='+', type=int, help="Now inserve")
+    parser.add_argument("-vertex", nargs='+', type=int, help="Now inserve", default=[10])
     parser.add_argument("-action_range", nargs='+', type=int, help=" ", default=[0, 3000])    # 如果步输入的话就是np.inf
     parser.add_argument("-lr", type=float, help=" ", default=float(1e-4))  # 如果步输入的话就是1.0
     parser.add_argument("-model_dir", type=str, help="Save dir")
