@@ -312,7 +312,10 @@ class CausalGraph:
                  last_vertex=[12],
                  patient_ID='adult#004',
                  flag=0,
-                 meal_time=[]):
+                 meal_time=[],
+                 default_meal=[50, 50, 50],
+                 default_insulin=0
+                 ):
         """
         Create the causal graph structure.
         :param adj_list: 10 ints in {-1, 0, 1} which form the upper-tri adjacency matrix上三角邻接矩阵
@@ -326,6 +329,8 @@ class CausalGraph:
         self.patient_ID = patient_ID
         self.flag = flag
         self.meal_time = meal_time
+        self.default_meal = default_meal
+        self.default_insulin = default_insulin
         current_path = os.path.abspath(__file__)
         # 获取当前文件的父目录
         father_path = os.path.abspath(os.path.dirname(current_path) + os.path.sep + ".")
@@ -404,17 +409,20 @@ class CausalGraph:
         state = self.init_state
 
         self.simulator.reset()
-
-    def intervene(self, action):
-        """
-        干预 insulin 为 RL 的 action （这里只干预基础胰岛素）
-        Intervene on the node at node_idx by setting its value to val.
-        :param node_idx: (int) node to intervene on
-        :param val: (float) value to set
-        """
         breakfast = 0
-        lunch = 0
-        dinner = 0
+        empty = []
+        if self.meal_time == empty:
+            breakfast = 360
+        else:
+            breakfast = self.meal_time[0]
+        if self.flag == 1 and self.time == 0:
+            for i in range(breakfast):
+                intervene = self.default_insulin
+                intervene = np.array([intervene])
+                self.simulator.step(intervene, 0)
+                self.time += 1
+
+    def action_flag0(self, action):
         empty = []
         if self.meal_time == empty:
             breakfast = 360
@@ -424,74 +432,99 @@ class CausalGraph:
             breakfast = self.meal_time[0]
             lunch = self.meal_time[1]
             dinner = self.meal_time[2]
+        intervene = action
         carb = 0
-        intervene = 0
+        breakfast_meal = self.default_meal[0]
+        lunch_meal = self.default_meal[1]
+        dinnner_meal = self.default_meal[2]
+        if self.time % breakfast == 0 and self.time % (breakfast * 2) != 0 and self.time != 0:
+            carb = breakfast_meal
+            intervene = action + breakfast_meal / self.CR + (
+                    self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
+        if self.time % lunch == 0 and self.time % (lunch * 2) != 0 and self.time != 0:
+            carb = lunch_meal
+            intervene = action + lunch_meal / self.CR + (
+                    self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
+        if self.time % dinner == 0 and self.time % (dinner * 2) != 0 and self.time != 0:
+            carb = dinnner_meal
+            intervene = action + dinnner_meal / self.CR + (
+                    self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
+        #print("摄入碳水:", intervene, "注射胰岛素:", carb)
+        self.simulator.step(intervene, carb)
+        self.time += 1
+
+    def action_flag1(self, action):
+        empty = []
+        if self.meal_time == empty:
+            breakfast = 360
+            lunch = 660
+            dinner = 1080
+        else:
+            breakfast = self.meal_time[0]
+            lunch = self.meal_time[1]
+            dinner = self.meal_time[2]
+        carb = action
+        intervene = self.default_insulin
+        intervene = np.array([intervene])
+        ins = 0
+        if (self.time % breakfast == 0 and self.time % (breakfast * 2) != 0 and self.time != 0) \
+                or (self.time % lunch == 0 and self.time % (lunch * 2) != 0 and self.time != 0) \
+                or (self.time % dinner == 0 and self.time % (dinner * 2) != 0 and self.time != 0):
+            ins = carb / self.CR + (self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
+            ins = intervene + ins
+        #print("摄入碳水", intervene, "注射胰岛素", carb)
+        self.simulator.step(ins, carb)
+        self.time += 1
+        if (self.time - 1) % breakfast == 0 and (self.time - 1) % (breakfast * 2) != 0 and (self.time - 1) != 0:
+            for i in range(lunch - breakfast - 1):
+                self.simulator.step(intervene, 0)
+                self.time += 1
+        if (self.time - 1) % lunch == 0 and (self.time - 1) % (lunch * 2) != 0 and (self.time - 1) != 0:
+            for i in range(dinner - lunch - 1):
+                self.simulator.step(intervene, 0)
+                self.time += 1
+        if (self.time - 1) % dinner == 0 and (self.time - 1) % (dinner * 2) != 0 and (self.time - 1) != 0:
+            for i in range(1440 - dinner - 1):
+                self.simulator.step(intervene, 0)
+                self.time += 1
+
+    def action_flag2(self, action):
+        empty = []
+        if self.meal_time == empty:
+            breakfast = 360
+            lunch = 660
+            dinner = 1080
+        else:
+            breakfast = self.meal_time[0]
+            lunch = self.meal_time[1]
+            dinner = self.meal_time[2]
+        intervene = action[0]
+        carb = action[1]
+        if (self.time % breakfast == 0 and self.time % (breakfast * 2) != 0 and self.time != 0) \
+                or (self.time % lunch == 0 and self.time % (lunch * 2) != 0 and self.time != 0) \
+                or (self.time % dinner == 0 and self.time % (dinner * 2) != 0 and self.time != 0):
+            intervene = intervene + carb / self.CR + (
+                    self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
+        intervene = np.array([intervene])
+        #print("摄入碳水",intervene,"注射胰岛素",carb)
+        self.simulator.step(intervene, carb)
+        self.time += 1
+
+    def intervene(self, action):
+        """
+        干预 insulin 为 RL 的 action （这里只干预基础胰岛素）
+        Intervene on the node at node_idx by setting its value to val.
+        :param node_idx: (int) node to intervene on
+        :param val: (float) value to set
+        """
+        print("时间：",self.time)
         if self.flag == 0:
-            print(self.time)
-            intervene = action
-            if self.time % breakfast == 0 and self.time % (breakfast * 2) != 0 and self.time != 0:
-                carb = 50
-                ins = action + self.meal / self.CR + (
-                        self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
-                intervene = ins
-            if self.time % lunch == 0 and self.time % (lunch * 2) != 0 and self.time != 0:
-                carb = 50
-                ins = action + self.meal / self.CR + (
-                        self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
-                intervene = ins
-            if self.time % dinner == 0 and self.time % (dinner * 2) != 0 and self.time != 0:
-                carb = 50
-                ins = action + self.meal / self.CR + (
-                        self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
-                intervene = ins
-            self.simulator.step(intervene, carb)
-            self.time += 1
+            self.action_flag0(action)
         if self.flag == 1:
-            if self.time == 0:
-                for i in range(breakfast):
-                    intervene = np.array([0.01])
-                    self.simulator.step(intervene, 0)
-                    self.time += 1
-                return
-            print(self.time)
-            carb = action
-            intervene = 0.01
-            if (self.time % breakfast == 0 and self.time % (breakfast * 2) != 0 and self.time != 0) \
-                    or (self.time % lunch == 0 and self.time % (lunch * 2) != 0 and self.time != 0) \
-                    or (self.time % dinner == 0 and self.time % (dinner * 2) != 0 and self.time != 0):
-                ins = 0.01 + self.meal / self.CR + (
-                        self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
-                intervene = ins
-            intervene = np.array([intervene])
-            self.simulator.step(intervene, carb)
-            self.time += 1
-            if (self.time - 1) % breakfast == 0 and (self.time - 1) % (breakfast * 2) != 0 and (self.time - 1) != 0:
-                for i in range(lunch - breakfast - 1):
-                    intervene = np.array([0.01])
-                    self.simulator.step(intervene, 0)
-                    self.time += 1
-            if (self.time - 1) % lunch == 0 and (self.time - 1) % (lunch * 2) != 0 and (self.time - 1) != 0:
-                for i in range(dinner - lunch - 1):
-                    intervene = np.array([0.01])
-                    self.simulator.step(intervene, 0)
-                    self.time += 1
-            if (self.time - 1) % dinner == 0 and (self.time - 1) % (dinner * 2) != 0 and (self.time - 1) != 0:
-                for i in range(1440 - dinner - 1):
-                    intervene = np.array([0.01])
-                    self.simulator.step(intervene, 0)
-                    self.time += 1
+            self.action_flag1(action)
         if self.flag == 2:
-            intervene = action[0]
-            carb = action[1]
-            if (self.time % breakfast == 0 and self.time % (breakfast * 2) != 0 and self.time != 0) \
-                    or (self.time % lunch == 0 and self.time % (lunch * 2) != 0 and self.time != 0) \
-                    or (self.time % dinner == 0 and self.time % (dinner * 2) != 0 and self.time != 0):
-                ins = intervene + self.meal / self.CR + (
-                        self.simulator.state[8] / self.params.Vg - self.target) / self.CF  # 计算餐前大剂量胰岛素
-                intervene = ins
-            intervene = np.array([intervene])
-            self.simulator.step(intervene, carb)
-            self.time += 1
+            self.action_flag2(action)
+
     def sample_all(self):
         """
         返回当前13个变量状态 和 当前血糖值

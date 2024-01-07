@@ -70,7 +70,7 @@ def train(args):
     father_path = os.path.abspath(os.path.dirname(father_path1) + os.path.sep + ".")
     print(args.vertex, args.action_range, args.model_dir)
     env = CBNEnv.create(
-        info_phase_length=1440,
+        info_phase_length=2,
         action_range=args.action_range,
         vertex=args.vertex,
         # reward_weight=args.reward_weight,
@@ -78,8 +78,10 @@ def train(args):
         n_env=1,
         patient_ID=args.patient_ID,
         list_last_vertex=[],
-        flag=2,
-        meal_time=[300,600,1000]
+        flag=1,
+        meal_time=[300,600,1000],
+        default_meal=[50,100,100],
+        default_insulin=0
     )
     optimizer_kwargs = dict(
         alpha=0.95,
@@ -117,13 +119,15 @@ def train(args):
     model.save(path)
 
 
-#
+
 if __name__ == "__main__":
     # 创建一个参数解析实例
     parser = argparse.ArgumentParser()
     # 添加参数解析
     parser.add_argument("-vertex", nargs='+', type=int, help="Now inserve", default=[10])
-    parser.add_argument("-action_range", nargs='+', type=int, help=" ", default=[np.array([0,0]),np.array([3000,1000])])    # 如果步输入的话就是np.inf
+    #parser.add_argument("-action_range", nargs='+', type=int, help=" ", default=[0, 3000])  # flag=0
+    parser.add_argument("-action_range", nargs='+', type=int, help=" ",default=[0,300])  # flag=1
+    #parser.add_argument("-action_range", nargs='+', type=int, help=" ", default=[np.array([0,0]),np.array([3000,300])])    #flag=2 # 如果步输入的话就是np.inf
     parser.add_argument("-lr", type=float, help=" ", default=float(1e-4))  # 如果步输入的话就是1.0
     parser.add_argument("-model_dir", type=str, help="Save dir")
     parser.add_argument("-reward_scale", nargs='+', type=float, help=" ", default=[1.0, 1.0])

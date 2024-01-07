@@ -23,20 +23,20 @@ def one_hot(length, idx):
     return one_hot
 
 
-
-
 class CBNEnv(Env):
     def __init__(self,
                  agent_type='default',
                  info_phase_length=1440,
                  action_range=[-np.inf, np.inf],
                  vertex=[5],
-                 reward_scale = [1.0, 1.0],
+                 reward_scale=[1.0, 1.0],
                  list_last_vertex=[],
                  train=True,
                  patient_ID='adult#004',
                  flag=0,
-                 meal_time=[]
+                 meal_time=[],
+                 default_meal=[50,50,50],
+                 default_insulin=0
                  ):
         """
         flag:0/1/2,0只控制胰岛素，1只控制碳水，2同时控制胰岛素与碳水
@@ -66,8 +66,10 @@ class CBNEnv(Env):
         self.reward_goal = []  # 生成goal列表
         self.reward_state = []  # 记录各个阶段 当前时刻 状态信息
         self.patient_ID = patient_ID
-        self.flag=flag
-        self.meal_time=meal_time
+        self.flag = flag
+        self.meal_time = meal_time
+        self.default_meal = default_meal
+        self.default_insulin = default_insulin
 
         # 初始化所有阶段的goal
         if len(list_last_vertex) > 0:
@@ -76,25 +78,39 @@ class CBNEnv(Env):
         else:
             # 当前阶段为x3-x12，last_vertex 为空
             self.last_vertex = [12]  # 上一次干预的顶点
-            self.goal = [[70*1.886280201, 180*1.886280201]]
+            self.goal = [[70 * 1.886280201, 180 * 1.886280201]]
 
         if train:
-            self.state = TrainEnvState(self.vertex, self.last_vertex, info_phase_length, self.patient_ID,self.flag,self.meal_time)  # 一个继承了 EnvState class 的类
+            self.state = TrainEnvState(self.vertex,self.last_vertex,
+                                       info_phase_length,self.patient_ID,
+                                       self.flag,self.meal_time,
+                                       self.default_meal,self.default_insulin)  # 一个继承了 EnvState class 的类
         else:
-            self.state = TestEnvState(self.vertex, self.last_vertex, info_phase_length, self.patient_ID,self.flag,self.meal_time)
+            self.state = TestEnvState(self.vertex,self.last_vertex,
+                                      info_phase_length,self.patient_ID,
+                                      self.flag,self.meal_time,
+                                      self.default_meal,self.default_insulin)
         # self.action_space = Box(action_range[0], action_range[1], (len(self.vertex),), dtype=np.float64)
-        if self.flag==0:
+        if self.flag == 0:
             self.action_space = Box(action_range[0], action_range[1], (1,), dtype=np.float64)
-        if self.flag==1:
+        if self.flag == 1:
             self.action_space = Box(action_range[0], action_range[1], (1,), dtype=np.float64)
-        if self.flag==2:
+        if self.flag == 2:
             self.action_space = Box(action_range[0], action_range[1], (2,), dtype=np.float64)
         self.observation_space = Box(-np.inf, np.inf, (self.state.graph.len_obe + 2 * len(self.goal),))  # 得到子图的节点数
         print("*************************", self.observation_space)
 
     @classmethod
-    def create(cls, info_phase_length, vertex, reward_scale, list_last_vertex, action_range, n_env, patient_ID,flag,meal_time):
-        return DummyVecEnv([lambda: cls(info_phase_length=info_phase_length, vertex=vertex, reward_scale=reward_scale, list_last_vertex=list_last_vertex, action_range=action_range, patient_ID=patient_ID,flag=flag,meal_time=meal_time)
+    def create(cls, info_phase_length, vertex, reward_scale, list_last_vertex, action_range, n_env, patient_ID, flag,
+               meal_time, default_meal=[50, 50, 50], default_insulin=0.):
+        return DummyVecEnv([lambda: cls(info_phase_length=info_phase_length,
+                                        vertex=vertex, reward_scale=reward_scale,
+                                        list_last_vertex=list_last_vertex,
+                                        action_range=action_range,
+                                        patient_ID=patient_ID,
+                                        flag=flag, meal_time=meal_time,
+                                        default_meal=default_meal,
+                                        default_insulin=default_insulin)
                             for _ in range(n_env)])
 
     def reward(self, val, observed_valse):
@@ -111,9 +127,9 @@ class CBNEnv(Env):
                 min(self.goal[0][1], max(self.goal[0][0], max_state[0])) - (self.goal[0][0] + self.goal[0][1]) / 2)
             score_center_plus = 24 - score_offset - 0.2 * score_center_plus
 
-        if (self.state.info_steps >= 360 and self.state.info_steps <= 420 ) \
-            or (self.state.info_steps >= 660 and self.state.info_steps <= 720) \
-            or (self.state.info_steps >= 1080 and self.state.info_steps <= 1140 ):
+        if (self.state.info_steps >= 360 and self.state.info_steps <= 420) \
+                or (self.state.info_steps >= 660 and self.state.info_steps <= 720) \
+                or (self.state.info_steps >= 1080 and self.state.info_steps <= 1140):
             # 用餐时间消除波动惩罚
             r2 = 0.0
         else:
@@ -183,7 +199,15 @@ class CBNEnv(Env):
 
 
 class EnvState(object):
-    def __init__(self, vertex, last_vertex, info_phase_length=50, patient_ID='adult#004',flag=0,meal_time=[]):
+    def __init__(self,
+                 vertex,
+                 last_vertex,
+                 info_phase_length=50,
+                 patient_ID='adult#004',
+                 flag=0,
+                 meal_time=[],
+                 default_meal=[50, 50, 50],
+                 default_insulin=0):
         """Create an object which holds the state of a CBNEnv"""
         self.info_phase_length = info_phase_length
         self.info_steps = None  # 用来记录当前是第几步
@@ -194,8 +218,10 @@ class EnvState(object):
         self.vertex = vertex
         self.last_vertex = last_vertex
         self.patient_ID = patient_ID
-        self.flag=flag
-        self.meal_time=meal_time
+        self.flag = flag
+        self.meal_time = meal_time
+        self.default_meal = default_meal
+        self.default_insulin = default_insulin
 
         self.reset()
 
@@ -221,7 +247,6 @@ class EnvState(object):
     def get_last_value(self, node_idx):
         return self.graph.get_last_value(node_idx)
 
-
     def get_graph(self):
         raise NotImplementedError()
 
@@ -235,16 +260,25 @@ class EnvState(object):
 
 class TrainEnvState(EnvState):
     def get_graph(self):
-        return CausalGraph(train=True, vertex=self.vertex, last_vertex=self.last_vertex, patient_ID=self.patient_ID,flag=self.flag,meal_time=self.meal_time)
+        return CausalGraph(train=True, vertex=self.vertex,
+                           last_vertex=self.last_vertex,
+                           patient_ID=self.patient_ID,
+                           flag=self.flag, meal_time=self.meal_time,
+                           default_meal=self.default_meal,
+                           default_insulin=self.default_insulin)
 
 
 class TestEnvState(EnvState):
     def get_graph(self):
-        return CausalGraph(train=False, vertex=self.vertex, last_vertex=self.last_vertex, patient_ID=self.patient_ID,flag=self.flag,meal_time=self.meal_time)
+        return CausalGraph(train=False, vertex=self.vertex,
+                           last_vertex=self.last_vertex,
+                           patient_ID=self.patient_ID,
+                           flag=self.flag, meal_time=self.meal_time,
+                           default_meal=self.default_meal,
+                           default_insulin=self.default_insulin)
 
 
 class DebugEnvState(EnvState):
     def __init__(self):
         super().__init__()
         self.reward_data = None
-
