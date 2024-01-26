@@ -517,7 +517,7 @@ class CausalGraph:
         :param node_idx: (int) node to intervene on
         :param val: (float) value to set
         """
-        print("时间：",self.time)
+        #print("时间：",self.time)
         if self.flag == 0:
             self.action_flag0(action)
         if self.flag == 1:

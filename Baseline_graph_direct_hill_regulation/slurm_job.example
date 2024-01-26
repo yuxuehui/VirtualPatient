@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH --job-name=yxh      #作业名称
+#SBATCH --partition=vip1                  #选择资源分区
+#SBATCH -N 1                                  #申请计算节点数
+#SBATCH --ntasks-per-node=1      #申请每个节点24核运行
+#SBATCH --gres=gpu:1                   #申请2张GPU卡
+#SBATCH --output=%j.out                #作业标准输出
+#SBATCH --error=%j.err                   #作业标准报错信息
+#SBATCH --time=120:00:00               #申请运行时间
+
+
+module load anaconda3        #加载anaconda变量
+source activate pytorch_lstm     #激活conda环境
+python ./01_train_ppo3.py -seed 0 -model_dir "baseline_ppo_simple_5nodes_human_20220325_1"
+
+

@@ -10,7 +10,7 @@ from virtual_patient.src_HER_Baseline_MLP_PPO.insulin_causal_x4_x8_simpler impor
 import torch
 import torch.nn.functional as F
 from virtual_patient.src_HER_Baseline_MLP_PPO.env_do_all_2reward import PreCBN
-from virtual_patient.src.a2c import A2C
+from src.a2c import A2C
 
 import operator
 from functools import reduce
@@ -35,8 +35,8 @@ class CBNEnv(Env):
                  patient_ID='adult#004',
                  flag=0,
                  meal_time=[],
-                 default_meal=[50,50,50],
-                 default_insulin=0
+                 default_meal=[50, 50, 50],
+                 default_insulin=0.0
                  ):
         """
         flag:0/1/2,0只控制胰岛素，1只控制碳水，2同时控制胰岛素与碳水
@@ -81,15 +81,15 @@ class CBNEnv(Env):
             self.goal = [[70 * 1.886280201, 180 * 1.886280201]]
 
         if train:
-            self.state = TrainEnvState(self.vertex,self.last_vertex,
-                                       info_phase_length,self.patient_ID,
-                                       self.flag,self.meal_time,
-                                       self.default_meal,self.default_insulin)  # 一个继承了 EnvState class 的类
+            self.state = TrainEnvState(self.vertex, self.last_vertex,
+                                       info_phase_length, self.patient_ID,
+                                       self.flag, self.meal_time,
+                                       self.default_meal, self.default_insulin)  # 一个继承了 EnvState class 的类
         else:
-            self.state = TestEnvState(self.vertex,self.last_vertex,
-                                      info_phase_length,self.patient_ID,
-                                      self.flag,self.meal_time,
-                                      self.default_meal,self.default_insulin)
+            self.state = TestEnvState(self.vertex, self.last_vertex,
+                                      info_phase_length, self.patient_ID,
+                                      self.flag, self.meal_time,
+                                      self.default_meal, self.default_insulin)
         # self.action_space = Box(action_range[0], action_range[1], (len(self.vertex),), dtype=np.float64)
         if self.flag == 0:
             self.action_space = Box(action_range[0], action_range[1], (1,), dtype=np.float64)
@@ -101,8 +101,10 @@ class CBNEnv(Env):
         print("*************************", self.observation_space)
 
     @classmethod
-    def create(cls, info_phase_length, vertex, reward_scale, list_last_vertex, action_range, n_env, patient_ID, flag,
-               meal_time, default_meal=[50, 50, 50], default_insulin=0.):
+    def create(cls, info_phase_length, vertex, reward_scale,
+               list_last_vertex, action_range, n_env, patient_ID,
+               flag, meal_time,default_meal=[50, 50, 50],
+               default_insulin=0.):
         return DummyVecEnv([lambda: cls(info_phase_length=info_phase_length,
                                         vertex=vertex, reward_scale=reward_scale,
                                         list_last_vertex=list_last_vertex,
