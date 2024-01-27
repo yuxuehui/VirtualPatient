@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="732c3af1-18e8-44da-9f9f-b33122caefff" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/01_train2_5nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/01_train2_hill_regulation_5nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/causal_5nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/causal_hill_regulation_5nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/env_5nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/env_hill_regulation_5nodes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/slurm_job.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/test2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation/test_direct_hill_regulation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/01_train2_level_contain1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/causal_5nodes_level.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/env_5nodes_level.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/env_5nodes_level2_sub.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/slurm_job.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Baseline_graph_direct_hill_regulation_level_100/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/data_glucose2.npy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Data/vpatient_params.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a2c.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/on_policy_algorithm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task_env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual_patient/01_train_2reward_PPO.py" beforeDir="false" afterPath="$PROJECT_DIR$/virtual_patient/01_train_2reward_PPO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual_patient/envs/env_do_all_her_2reward.py" beforeDir="false" afterPath="$PROJECT_DIR$/virtual_patient/envs/env_do_all_her_2reward.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual_patient/src/a2c.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual_patient/src/on_policy_algorithm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual_patient/src_HER_Baseline_MLP_PPO/insulin_causal_x4_x8_simpler.py" beforeDir="false" afterPath="$PROJECT_DIR$/virtual_patient/src_HER_Baseline_MLP_PPO/insulin_causal_x4_x8_simpler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -198,8 +171,8 @@
       <item itemvalue="Python.01_train2" />
       <item itemvalue="Python.01_train2_5nodes" />
       <item itemvalue="Python.01_train2_level_contain1" />
-      <item itemvalue="Python.task_env" />
       <item itemvalue="Python.01_train_2reward_PPO" />
+      <item itemvalue="Python.task_env" />
     </list>
     <recent_temporary>
       <list>
@@ -251,7 +224,19 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
