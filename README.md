@@ -2,10 +2,27 @@
 ![Teaser](img/virtualpatient_sim.png)
 
 # VirtualPatients
-VirtualPatients provides diabetics smulators, which not only be built based on real-data of an online healthcare application, Dnurse, but also provide interpretable dynamic transitions of a variety of patients. VirtualPatients is a near-realistic patient simulator, which can be helpful for testing decision support system, recommendation system and interpretable reasoning in real-world application, in which contains uncertainty, noise and user heterogeneity. Our research aims to foster the development of intelligent decision support studies for online applications, promoting the advancement of robust, personalized algorithms.
 
-## Main Features
-### Simulated Environment
+<!-- ## 🔥 News
+
+- [2024-12-25] Opensourced offline dataset
+- [2024-01-26] Release VritualPatients V1.0 -->
+
+VirtualPatients is a physics platform that enables users to design and test treatment protocols for in-silico subjects with Diabetes Mellitus. It is simultaneously multiple things:
+
+1. A **lightweight**, **Pythonic**, and **user-friendly** patient simulation platform.
+2.  A universal physics engine capable of simulating a wide range of individual differences and biophysiological phenomena.
+3.  A tool to simulate and test treatment protocols identical to proposed clinical studies.
+4.  A system to measure the impact on diabetes management and treatment.
+
+
+## Key Features
+
+- 🐍 100% Python, both front-end interface and back-end physics engine, all natively developed in python.
+- 📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
+- 💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
+
+<!-- ### Simulated Environment
 VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
 
 Utilizing the VirtualPatients simulator, one can access a "live" environment just like the real online healthcare environment. This simulator generates virtual patients individually, each beginning with an initial physiological metric, such as blood glucose levels. Algorithms are then tasked with formulating treatment recommendations, encompassing aspects like meal size, insulin dosage, and exercise intensity. Following the implementation of these treatments, the virtual patient provides feedback, indicating how their physiological metrics have responded, akin to the responses one would expect from real-life patients. This feedback loop simulates real-world patient responses, offering valuable insights into the effectiveness of treatment strategies.
@@ -16,7 +33,7 @@ Utilizing the VirtualPatients simulator, one can access a "live" environment jus
 
 3) Each patient (both 30 virtual patients and 9 real-world patients) is associated with 61 static attributes. Here, static/dynmaic means whether the features will change during an interactive process. The attributes information about involve patient age, patient gender, patient , etc.
 
-4) We provide 
+4) We provide  -->
 
 ## Installation
 ### Install using pip
