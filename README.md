@@ -3,7 +3,7 @@
 
 # VirtualPatients
 
-VirtualPatients is a physics platform that enables users to design and test healthcare interventions for in-silico subjects with Diabetes Mellitus. It is simultaneously multiple things:
+VirtualPatients is a biophysiological platform that allows users to design and evaluate healthcare interventions for in-silico populations and general-purpose healthcare applications. It is simultaneously multiple things:
 
 1. A **lightweight**, **Pythonic**, and **user-friendly** patient simulation platform.
 2. A **universal biophysiological engine** capable of simulating a wide range of individual differences and biophysiological phenomena.
