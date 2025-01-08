@@ -3,10 +3,9 @@
 
 # VirtualPatients
 
-<!-- ## 🔥 News
-
-- [2024-12-25] Opensourced offline dataset
-- [2024-01-26] Release VritualPatients V1.0 -->
+🔥 **News**
+- [2024-04-25] Open-sourced offline dataset  
+- [2024-01-26] Released VirtualPatients V1.0  
 
 VirtualPatients is a physics platform that enables users to design and test healthcare interventions for in-silico subjects with Diabetes Mellitus. It is simultaneously multiple things:
 
