@@ -131,9 +131,41 @@ cd VirtualPatients
 pip install -e .
 ```
 
-## Usage for Supervised Learning
+## Designing healthcare interventions through a decision algorithm
 
-## Usage for Reinforcement Learning
+### VirtualPatients Intervention Schemes
+
+**VirtualPatients** provides three intervention schemes to meet the personalised needs of different patients:  
+1) **Dietary intervention**  
+2) **Medication intervention**  
+3) **Combined dietary and medication intervention**  
+
+(An interface for exercise intervention will be made available soon.)  
+
+The intervention scheme is configured using five parameters: `info_phase_length`, `flag`, `meal_time`, `default_meal`, and `default_insulin`. The details of each parameter are as follows:  
+
+- **`flag`**: Determines the control mode with a value of 0, 1, or 2.  
+  - `0`: Controls carbohydrates only.  
+  - `1`: Controls insulin only.  
+  - `2`: Controls both carbohydrates and insulin.  
+
+- **`info_phase_length`**: Specifies the training step length.  
+  - Set to `2` when `flag=1`.  
+  - Set to `1440` for other `flag` values.  
+
+- **`meal_time`**: Specifies meal times in a list with three elements (in minutes).  
+  - Default value: `[360, 660, 1080]`  
+  - Example: `[360, 660, 1080]`  
+
+- **`default_meal`**: Specifies the default meal amount, used when `flag=0`.  
+  - Formatted as a list with three elements.  
+  - Default value: `[50, 50, 50]`  
+  - Example: `[50, 50, 50]`  
+
+- **`default_insulin`**: Specifies the default insulin amount, used when `flag=1`.  
+  - Formatted as a float.  
+  - Default value: `0.01`  
+
 
 How to instantiate a virtual patient?
 ```python
