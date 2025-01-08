@@ -19,9 +19,11 @@ VirtualPatients is a physics platform that enables users to design and test trea
 
 ### Key Features
 
-- 🐍 100% Python, both front-end interface and back-end physics engine, all natively developed in python.
-- 📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
-- 💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
+🐍 100% Python, both front-end interface and back-end physics engine, all natively developed in python.
+
+📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
+
+💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
 ### IN Silico Population
 - Embodies the biophysiological parameters of the FDA accepted in silico population
@@ -110,19 +112,6 @@ $$
 
 The $\textcolor[rgb]{0.5,0.32,0.43}{\text{purple variables}}$ correspond to the personalised learnable simulation parameters $\textbf{u}$. The feature variables $\textbf{u}$ for 39 patients were trained on the patients' offline data and are stored in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
 
-<!-- ### Simulated Environment
-VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
-
-Utilizing the VirtualPatients simulator, one can access a "live" environment just like the real online healthcare environment. This simulator generates virtual patients individually, each beginning with an initial physiological metric, such as blood glucose levels. Algorithms are then tasked with formulating treatment recommendations, encompassing aspects like meal size, insulin dosage, and exercise intensity. Following the implementation of these treatments, the virtual patient provides feedback, indicating how their physiological metrics have responded, akin to the responses one would expect from real-life patients. This feedback loop simulates real-world patient responses, offering valuable insights into the effectiveness of treatment strategies.
-
-1) We provide 30 virtual patients, modified from *the glucose-insulin system* [1], which is the open source part of the DMMS.R and T1DM simulators developed by The Epsilon Group and has been certified by the US FDA. The glucose-insulin system is an existing dynamic model of glucose ingestion and absorption, which is obtained through an extremely challenging triple tracer meal protocol by tracking the glucose conversion dynamic in the meals of 204 normal individuals. 
-
-2) Besides, we provide 9 real-wrold patients trained through dataset from Dnurse. How these nine patients were trained is described in:
-
-3) Each patient (both 30 virtual patients and 9 real-world patients) is associated with 61 static attributes. Here, static/dynmaic means whether the features will change during an interactive process. The attributes information about involve patient age, patient gender, patient , etc.
-
-4) We provide  -->
-
 ## How to Use VirtualPatients?
 ### Quick Installation
 For the latest version, clone the repository and install locally:
@@ -132,9 +121,7 @@ cd VirtualPatients
 pip install -e .
 ```
 
-## Designing healthcare interventions through a decision algorithm
-
-### VirtualPatients Intervention Schemes
+### Designing healthcare interventions through a decision algorithm
 
 **VirtualPatients** provides three intervention schemes to meet the personalised needs of different patients:  
 1) **Dietary intervention**  
@@ -209,7 +196,6 @@ model.learn(    # train
 
 env.close()
 ```
-
 
 # Associated Papers
 VirtualPatients is the result of a collaborative effort between the [Web Intelligence Group](http://wi.hit.edu.cn/) at Harbin Institute of Technology and [Dnurse](https://www.dnurse.com/v2/en/). It is a large-scale effort that integrates various existing and ongoing research projects into a single system. Below is a list of papers that have contributed to the VirtualPatients project:
