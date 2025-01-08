@@ -11,7 +11,7 @@
 VirtualPatients is a physics platform that enables users to design and test treatment protocols for in-silico subjects with Diabetes Mellitus. It is simultaneously multiple things:
 
 1. A **lightweight**, **Pythonic**, and **user-friendly** patient simulation platform.
-2.  A universal physics engine capable of simulating a wide range of individual differences and biophysiological phenomena.
+2.  A universal biophysiological engine capable of simulating a wide range of individual differences and biophysiological phenomena.
 3.  A tool to simulate and test treatment protocols identical to proposed clinical studies.
 4.  A system to measure the impact on diabetes management and treatment.
 
@@ -19,13 +19,13 @@ VirtualPatients is a physics platform that enables users to design and test trea
 
 ### Key Features
 
-🐍 100% Python, both front-end interface and back-end physics engine, all natively developed in python.
+🐍 100% Python, both front-end interface and back-end biophysiological engine, all natively developed in python.
 
 📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
 
 💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
-### IN Silico Population
+### In Silico Population
 - Embodies the biophysiological parameters of the FDA accepted in silico population
 - 19 adults, 10 adolescents, 10 children
 
