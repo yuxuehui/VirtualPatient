@@ -3,7 +3,7 @@
 
 # VirtualPatients
 
-VirtualPatients is a biophysiological platform that allows users to design and evaluate healthcare interventions for in-silico populations and general-purpose healthcare applications. It is simultaneously multiple things:
+VirtualPatients is a biophysiology platform that allows users to design and evaluate healthcare interventions for in-silico populations and general-purpose healthcare applications. It is simultaneously multiple things:
 
 1. A **lightweight**, **Pythonic**, and **user-friendly** patient simulation platform.
 2. A **universal biophysiological engine** capable of simulating a wide range of individual differences and biophysiological phenomena.
@@ -22,7 +22,7 @@ VirtualPatients is a biophysiological platform that allows users to design and e
 
 📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
 
-💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
+💥 A unified framework that supports various state-of-the-art physiology solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
 ### In Silico Population
 - Embodies the biophysiological parameters of the FDA accepted in silico population
