@@ -68,7 +68,7 @@ $$
 $$
 
 $$
-\Delta_3 = \max(\textcolor[rgb]{0.5,0.32,0.43}{kp_1} - \textcolor[rgb]{0.5,0.32,0.43}{kp_2} \cdot x_3 - \textcolor[rgb]{0.5,0.32,0.43}{kp_3} \cdot x_8, 0) - 1 + \textcolor[rgb]{0.5,0.32,0.43}{\frac{f \cdot kabs}{BW}} \cdot x_2 \quad - \textcolor[rgb]{0.5,0.32,0.43}{ke_1} \cdot \text{Relu}(x_3 - \textcolor[rgb]{0.5,0.32,0.43}{ke_2}) - \textcolor[rgb]{0.5,0.32,0.43}{k_1} \cdot x_3 + \textcolor[rgb]{0.5,0.32,0.43}{k_2} \cdot x_4
+\Delta_3 = \max(\textcolor[rgb]{0.5,0.32,0.43}{kp_1} - \textcolor[rgb]{0.5,0.32,0.43}{kp_2} \cdot x_3 - \textcolor[rgb]{0.5,0.32,0.43}{kp_3} \cdot x_8, 0) - 1 + \textcolor[rgb]{0.5,0.32,0.43}{\frac{f \cdot kabs}{BW}} \cdot x_2 - \textcolor[rgb]{0.5,0.32,0.43}{ke_1} \cdot \text{Relu}(x_3 - \textcolor[rgb]{0.5,0.32,0.43}{ke_2}) - \textcolor[rgb]{0.5,0.32,0.43}{k_1} \cdot x_3 + \textcolor[rgb]{0.5,0.32,0.43}{k_2} \cdot x_4
 $$
 
 $$
