@@ -1,4 +1,4 @@
-![VirtualPatients](img/virtualpatient_logo.jpg)
+![VirtualPatients](img/virtualpatient_logo.png)
 ![Teaser](img/virtualpatient_sim.png)
 
 # VirtualPatients
