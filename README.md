@@ -35,17 +35,20 @@ Utilizing the VirtualPatients simulator, one can access a "live" environment jus
 
 4) We provide  -->
 
-## Installation
-### Install using pip
-Install the VirtualPatients package:
-```
+## How to Use VirtualPatients?
+### Quick Installation
+For the latest version, clone the repository and install locally:
+```bash
+git clone https://github.com/yuxuehui/VirtualPatient.git
+cd VirtualPatients
 pip install -e .
 ```
 
 ## Usage for Supervised Learning
 
 ## Usage for Reinforcement Learning
-How create a virtual patient?
+
+How to instantiate a virtual patient?
 ```
 from virtual_patient.envs.env_do_all_her_2reward import CBNEnv
 from stable_baselines3 import PPO
