@@ -22,6 +22,34 @@ VirtualPatients is a physics platform that enables users to design and test trea
 - 📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
 - 💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
+### IN SILICO POPULATION
+- Embodies the biophysiological parameters of the FDA accepted in silico population
+- 19 adults, 10 adolescents, 10 children
+
+### BASIC USER-DEFINED SIMULATION INPUT
+- Meal profiles (amount, timing and duration of a meal)
+- Insulin treatment (amount and timing of basal/bolus insulin doses)
+- Time of simulation and regulation (length & time of day)
+
+<img src="img/bg_level.png" alt="drawing" width="200"/>
+
+### SUBJECT-SPECIFIC DATA TO FINE-TUNE TREATMENT
+- Individualized, intra-personal results
+- Inter-personal differences are revealed across the spectrum of human variation
+- Population results are calculated from the individual results as in a clinical trial
+- Age, Body Weight (kg), Subject-specific optimal basal insulin rate (u/hr), individual carbohydrate ratio (CR, g/U), total daily insulin, and insulin sensitivity (maximum drop in glucose mg/dl per unit of insulin[MD])
+- Metabolic testing results may be simulated for individual subjects and incorporated into treatment plans prior
+
+### SIMULATION RESULTS DATA (PER SUBJECT AND POPULATION) 
+- Blood glucose (BG) values and simulated sensor readings (mg/dl per minute)
+- Basal/bolus insulin injections (pmol/minute)
+- User-specified data from controller
+- System states, carbohydrate intake and more ...
+
+
+## Differentiable Simulation Process
+
+
 <!-- ### Simulated Environment
 VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
 
