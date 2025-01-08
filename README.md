@@ -8,12 +8,12 @@
 - [2024-12-25] Opensourced offline dataset
 - [2024-01-26] Release VritualPatients V1.0 -->
 
-VirtualPatients is a physics platform that enables users to design and test treatment protocols for in-silico subjects with Diabetes Mellitus. It is simultaneously multiple things:
+VirtualPatients is a physics platform that enables users to design and test healthcare interventions for in-silico subjects with Diabetes Mellitus. It is simultaneously multiple things:
 
 1. A **lightweight**, **Pythonic**, and **user-friendly** patient simulation platform.
-2.  A universal biophysiological engine capable of simulating a wide range of individual differences and biophysiological phenomena.
-3.  A tool to simulate and test treatment protocols identical to proposed clinical studies.
-4.  A system to measure the impact on diabetes management and treatment.
+2. A **universal biophysiological engine** capable of simulating a wide range of individual differences and biophysiological phenomena.
+3. A **realistic rendering system** to simulate and test healthcare interventions identical to proposed clinical studies.
+4. A **generative data engine** that transforms offline datasets into diverse simulated data.
 
 ## Overview
 
@@ -31,17 +31,17 @@ VirtualPatients is a physics platform that enables users to design and test trea
 
 ### Basic User-Defined Simulation Input
 - Meal profiles (CHO amount, timing and duration of a meal)
-- Insulin treatment (amount and timing of basal/bolus insulin doses)
+- Insulin intervention (amount and timing of basal/bolus insulin doses)
 - Time of simulation and regulation (length & time of day)
 
 <img src="img/bg_level.png" alt="drawing" width="400" class="center"/>
 
-### Subject-Specific Data to Fine-Tune Treatment
+### Subject-Specific Data to Fine-Tune Intervention
 - Individualised, intra-personal results 
 - Inter-personal differences are highlighted across the spectrum of human variation  
 - Population results are calculated from individual results, as in a clinical trial  
 - Age, Body Weight (kg), subject-specific optimal basal insulin rate (u/hr), individual carbohydrate ratio (CR, g/U), total daily insulin, and insulin sensitivity (maximum drop in glucose mg/dl per unit of insulin [MD])  
-- Metabolic testing results may be simulated for individual subjects and incorporated into treatment plans beforehand  
+- Metabolic testing results may be simulated for individual subjects and incorporated into intervention plans beforehand  
 
 ### Simulation Results Data (Per Subject and Population)
 - Blood glucose (BG) values and simulated sensor readings (mg/dl per minute)
