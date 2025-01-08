@@ -52,23 +52,68 @@ VirtualPatients is a physics platform that enables users to design and test trea
 ![differential](img/virtualpatient_differential.png)
 
 $$
-\begin{aligned}
-    & \Delta_0 = -\textcolor{myper}{k_{max}} \cdot x_0 + CHO \cdot 1000 \\
-    & \textcolor{mygreen}{kgut} \in [\textcolor{myper}{k_{min}}, \textcolor{myper}{k_{max}}] \\
-    & \Delta_1 = \textcolor{myper}{k_{max}} \cdot x_0 - \textcolor{mygreen}{kgut} \cdot x_1 \\
-    & \Delta_2 = \textcolor{mygreen}{kgut} \cdot x_1 - \textcolor{myper}{kabs} \cdot x_2 \\
-    & \Delta_3 = \max(\textcolor{myper}{kp_1} - \textcolor{myper}{kp_2} \cdot x_3 - \textcolor{myper}{kp_3} \cdot x_8, 0) - 1 +  \textcolor{myper}{\frac{f \cdot kabs}{BW}} \cdot x_2 \\
-    & \quad - \textcolor{myper}{ke_1} \cdot \text{Relu}(x_3 - \textcolor{myper}{ke_2}) -  \textcolor{myper}{k_1} \cdot x_3 + \textcolor{myper}{k_2} \cdot x_4 \\
-    & \Delta_4 = -\frac{\textcolor{myper}{Vm_0} + \textcolor{myper}{Vm_x} \cdot x_6 \cdot x_4}{x_4 + \textcolor{myper}{Km_0}} +  \textcolor{myper}{k_1} \cdot x_3 - \textcolor{myper}{k_2} \cdot x_4 \\
-    & \Delta_5 = -\textcolor{myper}{m_2 + m_4} \cdot x_5 + \textcolor{myper}{m_1} \cdot x_9 +  \textcolor{myper}{ka_1} \cdot x_{10} + \textcolor{myper}{ka_2} \cdot x_{11} \\
-    & \Delta_6 = -\textcolor{myper}{p2u} \cdot x_6 + \textcolor{myper}{p2u} \cdot \left( \frac{x_5}{\textcolor{myper}{Vi}} - \textcolor{myper}{Ib} \right) \\
-    & \Delta_7 = - \textcolor{myper}{ki} \cdot \left( \frac{x_7 - x_5}{\textcolor{myper}{Vi}} \right) \\
-    & \Delta_8 = - \textcolor{myper}{ki} \cdot (x_8 - x_7) \\
-    & \Delta_9 = - \textcolor{myper}{m_1 + m_{30}} \cdot x_9 + \textcolor{myper}{m_2} \cdot x_5 \\
-    & \Delta_{11} = \textcolor{myper}{kd} \cdot x_{10} - \textcolor{myper}{ka_2} \cdot x_{11} \\
-    & \Delta_{12} = -\textcolor{myper}{ksc} \cdot x_{12} + \textcolor{myper}{ksc} \cdot x_3 \\
-\end{aligned}
+\Delta_0 = -\textcolor[rgb]{0.27,0.4,0.37}{k_{max}} \cdot x_0 + CHO \cdot 1000
 $$
+
+$$
+\textcolor[rgb]{0.27,0.4,0.37}{kgut} \in [\textcolor[rgb]{0.5,0.32,0.43}{k_{min}}, \textcolor[rgb]{0.5,0.32,0.43}{k_{max}}]
+$$
+
+$$
+\Delta_1 = \textcolor[rgb]{0.5,0.32,0.43}{k_{max}} \cdot x_0 - \textcolor[rgb]{0.27,0.4,0.37}{kgut} \cdot x_1
+$$
+
+$$
+\Delta_2 = \textcolor[rgb]{0.27,0.4,0.37}{kgut} \cdot x_1 - \textcolor[rgb]{0.5,0.32,0.43}{kabs} \cdot x_2
+$$
+
+$$
+\Delta_3 = \max(\textcolor[rgb]{0.5,0.32,0.43}{kp_1} - \textcolor[rgb]{0.5,0.32,0.43}{kp_2} \cdot x_3 
+- \textcolor[rgb]{0.5,0.32,0.43}{kp_3} \cdot x_8, 0) - 1 + \textcolor[rgb]{0.5,0.32,0.43}{\frac{f \cdot kabs}{BW}} \cdot x_2
+$$
+
+$$
+\quad - \textcolor[rgb]{0.5,0.32,0.43}{ke_1} \cdot \text{Relu}(x_3 - \textcolor[rgb]{0.5,0.32,0.43}{ke_2}) 
+- \textcolor[rgb]{0.5,0.32,0.43}{k_1} \cdot x_3 + \textcolor[rgb]{0.5,0.32,0.43}{k_2} \cdot x_4
+$$
+
+$$
+\Delta_4 = -\frac{\textcolor[rgb]{0.5,0.32,0.43}{Vm_0} + \textcolor[rgb]{0.5,0.32,0.43}{Vm_x} \cdot x_6 \cdot x_4}{x_4 + \textcolor[rgb]{0.5,0.32,0.43}{Km_0}} 
++ \textcolor[rgb]{0.5,0.32,0.43}{k_1} \cdot x_3 - \textcolor[rgb]{0.5,0.32,0.43}{k_2} \cdot x_4
+$$
+
+$$
+\Delta_5 = -\textcolor[rgb]{0.5,0.32,0.43}{m_2 + m_4} \cdot x_5 
++ \textcolor[rgb]{0.5,0.32,0.43}{m_1} \cdot x_9 
++ \textcolor[rgb]{0.5,0.32,0.43}{ka_1} \cdot x_{10} 
++ \textcolor[rgb]{0.5,0.32,0.43}{ka_2} \cdot x_{11}
+$$
+
+$$
+\Delta_6 = -\textcolor[rgb]{0.5,0.32,0.43}{p2u} \cdot x_6 
++ \textcolor[rgb]{0.5,0.32,0.43}{p2u} \cdot \left( \frac{x_5}{\textcolor[rgb]{0.5,0.32,0.43}{Vi}} - \textcolor[rgb]{0.5,0.32,0.43}{Ib} \right)
+$$
+
+$$
+\Delta_7 = -\textcolor[rgb]{0.5,0.32,0.43}{ki} \cdot \left( \frac{x_7 - x_5}{\textcolor[rgb]{0.5,0.32,0.43}{Vi}} \right)
+$$
+
+$$
+\Delta_8 = -\textcolor[rgb]{0.5,0.32,0.43}{ki} \cdot (x_8 - x_7)
+$$
+
+$$
+\Delta_9 = -\textcolor[rgb]{0.5,0.32,0.43}{m_1 + m_{30}} \cdot x_9 + \textcolor[rgb]{0.5,0.32,0.43}{m_2} \cdot x_5
+$$
+
+$$
+\Delta_{11} = \textcolor[rgb]{0.5,0.32,0.43}{kd} \cdot x_{10} - \textcolor[rgb]{0.5,0.32,0.43}{ka_2} \cdot x_{11}
+$$
+
+$$
+\Delta_{12} = -\textcolor[rgb]{0.5,0.32,0.43}{ksc} \cdot x_{12} + \textcolor[rgb]{0.5,0.32,0.43}{ksc} \cdot x_3
+$$
+
 
 <!-- ### Simulated Environment
 VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
