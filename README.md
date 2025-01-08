@@ -209,17 +209,6 @@ model.learn(    # train
 env.close()
 ```
 
-个性化说明：
-一共三种模式：只控制碳水，只控制胰岛素，同时控制碳水与胰岛素。
-个性化一共需要设置env = CBNEnv.create中的五个参数：info_phase_length,flag,meal_time,default_meal,default_insulin
-下面对参数进行说明：
-flag：取值为0/1/2，设置控制模式。0只控制碳水，1只控制胰岛素，2同时控制碳水与胰岛素。
-info_phase_length：训练步长，flag=1时需要设置为2，其余设置为1440。
-meal_time:用餐时间，格式为拥有3个元素的列表，单位为min，默认值为360,660,1080。eg：[360,660,1080]
-default_meal：用餐量，用于在flag=0时控制默认的用餐量，格式为拥有3个元素的列表，默认值为50,50,50。eg：[50,50,50]
-default_insulin:胰岛素量，用于在flag=1时控制默认的胰岛素输入量，格式为float，默认值0.01
-**另外需要根据模式不同改变parser.add_argument("-action_range", nargs='+', type=int, help=" ",default=[0,300])中的参数，用来指定动作空间取值范围**
-
 
 # Acknowledgement
 This project is an outcome of a joint work of [Web Intelligence Group](http://wi.hit.edu.cn/), Harbin Insititute Technology and [Dnurse](https://www.dnurse.com/v2/en/).
