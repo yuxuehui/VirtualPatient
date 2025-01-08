@@ -15,32 +15,33 @@ VirtualPatients is a physics platform that enables users to design and test trea
 3.  A tool to simulate and test treatment protocols identical to proposed clinical studies.
 4.  A system to measure the impact on diabetes management and treatment.
 
+## Overview
 
-## Key Features
+### Key Features
 
 - 🐍 100% Python, both front-end interface and back-end physics engine, all natively developed in python.
 - 📐 Differentiability: VirtualPatients is designed to be fully compatible with differentiable simulation. 
 - 💥 A unified framework that supports various state-of-the-art physics solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
-### IN SILICO POPULATION
+### IN Silico Population
 - Embodies the biophysiological parameters of the FDA accepted in silico population
 - 19 adults, 10 adolescents, 10 children
 
-### BASIC USER-DEFINED SIMULATION INPUT
-- Meal profiles (amount, timing and duration of a meal)
+### Basic User-Defined Simulation Input
+- Meal profiles (CHO amount, timing and duration of a meal)
 - Insulin treatment (amount and timing of basal/bolus insulin doses)
 - Time of simulation and regulation (length & time of day)
 
-<img src="img/bg_level.png" alt="drawing" width="200" class="center"/>
+<img src="img/bg_level.png" alt="drawing" width="400" class="center"/>
 
-### SUBJECT-SPECIFIC DATA TO FINE-TUNE TREATMENT
-- Individualized, intra-personal results
-- Inter-personal differences are revealed across the spectrum of human variation
-- Population results are calculated from the individual results as in a clinical trial
-- Age, Body Weight (kg), Subject-specific optimal basal insulin rate (u/hr), individual carbohydrate ratio (CR, g/U), total daily insulin, and insulin sensitivity (maximum drop in glucose mg/dl per unit of insulin[MD])
-- Metabolic testing results may be simulated for individual subjects and incorporated into treatment plans prior
+### Subject-Specific Data to Fine-Tune Treatment
+- Individualised, intra-personal results 
+- Inter-personal differences are highlighted across the spectrum of human variation  
+- Population results are calculated from individual results, as in a clinical trial  
+- Age, Body Weight (kg), subject-specific optimal basal insulin rate (u/hr), individual carbohydrate ratio (CR, g/U), total daily insulin, and insulin sensitivity (maximum drop in glucose mg/dl per unit of insulin [MD])  
+- Metabolic testing results may be simulated for individual subjects and incorporated into treatment plans beforehand  
 
-### SIMULATION RESULTS DATA (PER SUBJECT AND POPULATION) 
+### Simulation Results Data (Per Subject and Population)
 - Blood glucose (BG) values and simulated sensor readings (mg/dl per minute)
 - Basal/bolus insulin injections (pmol/minute)
 - User-specified data from controller
@@ -151,7 +152,7 @@ The intervention scheme is configured using five parameters: `info_phase_length`
 
 - **`info_phase_length`**: the number of time steps per day.  
   - `3` when `flag=0`, three meals per day.  
-  - `1440` for other `flag` values. Short-acting insulin is infused once per minute, so 1440 insulin doses are required in a day. 
+  - `1440` for other `flag` values. Basal/bolus insulin injections are once per minute, so 1440 insulin doses are required in a natural day. 
 
 - **`meal_time`**: Specifies meal times in a list with three elements (in minutes). Default value: `[360, 660, 1080]`  
 
@@ -210,8 +211,14 @@ env.close()
 ```
 
 
-# Acknowledgement
-This project is an outcome of a joint work of [Web Intelligence Group](http://wi.hit.edu.cn/), Harbin Insititute Technology and [Dnurse](https://www.dnurse.com/v2/en/).
+# Associated Papers
+VirtualPatients is the result of a collaborative effort between the [Web Intelligence Group](http://wi.hit.edu.cn/) at Harbin Institute of Technology and [Dnurse](https://www.dnurse.com/v2/en/). It is a large-scale effort that integrates various existing and ongoing research projects into a single system. Below is a list of papers that have contributed to the VirtualPatients project:
+
+- Yu, Xuehui, et al. "Causal prompting model-based offline reinforcement learning." arXiv preprint arXiv:2406.01065 (2024).
+- Yu, Xuehui, et al. "KaDGT: How to Survive in Online Personalisation with Highly Low-quality Offline Datasets." arXiv preprint arXiv:2335.20405 (2024).
+- Liu, Liangliang, et al. "An interactive food recommendation system using reinforcement learning." Expert Systems with Applications (2024): 124313.
+- Yu, Xuehui, et al. "ARLPE: A meta reinforcement learning framework for glucose regulation in type 1 diabetics." Expert Systems with Applications 228 (2023): 120156.
+- Yu, Xuehui, et al. "Causal Coupled Mechanisms: A Control Method with Cooperation and Competition for Complex System." 2022 IEEE International Conference on Bioinformatics and Biomedicine (BIBM). IEEE, 2022.
 
 # Reference
 [1] Dalla Man C, Rizza R A, Cobelli C. Meal simulation model of the glucose-insulin system[J]. IEEE Transactions on biomedical engineering, 2007, 54(10): 1740-1749.
