@@ -31,7 +31,7 @@ VirtualPatients is a physics platform that enables users to design and test trea
 - Insulin treatment (amount and timing of basal/bolus insulin doses)
 - Time of simulation and regulation (length & time of day)
 
-<img src="img/bg_level.png" alt="drawing" width="200"class="center"/>
+<img src="img/bg_level.png" alt="drawing" width="200" class="center"/>
 
 ### SUBJECT-SPECIFIC DATA TO FINE-TUNE TREATMENT
 - Individualized, intra-personal results
