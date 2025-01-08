@@ -1,11 +1,13 @@
-# VirtualPatient
-VirtualPatient provides diabetics smulators, which not only be built based on real-data of an online healthcare application, Dnurse, but also provide interpretable dynamic transitions of a variety of patients. VirtualPatient is a near-realistic patient simulator, which can be helpful for testing decision support system, recommendation system and interpretable reasoning in real-world application, in which contains uncertainty, noise and user heterogeneity. Our research aims to foster the development of intelligent decision support studies for online applications, promoting the advancement of robust, personalized algorithms.
+![VirtualPatients](img/VirtualPatient_logo.jpg)
+
+# VirtualPatients
+VirtualPatients provides diabetics smulators, which not only be built based on real-data of an online healthcare application, Dnurse, but also provide interpretable dynamic transitions of a variety of patients. VirtualPatients is a near-realistic patient simulator, which can be helpful for testing decision support system, recommendation system and interpretable reasoning in real-world application, in which contains uncertainty, noise and user heterogeneity. Our research aims to foster the development of intelligent decision support studies for online applications, promoting the advancement of robust, personalized algorithms.
 
 ## Main Features
 ### Simulated Environment
-VirtualPatient simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
+VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
 
-Utilizing the VirtualPatient simulator, one can access a "live" environment just like the real online healthcare environment. This simulator generates virtual patients individually, each beginning with an initial physiological metric, such as blood glucose levels. Algorithms are then tasked with formulating treatment recommendations, encompassing aspects like meal size, insulin dosage, and exercise intensity. Following the implementation of these treatments, the virtual patient provides feedback, indicating how their physiological metrics have responded, akin to the responses one would expect from real-life patients. This feedback loop simulates real-world patient responses, offering valuable insights into the effectiveness of treatment strategies.
+Utilizing the VirtualPatients simulator, one can access a "live" environment just like the real online healthcare environment. This simulator generates virtual patients individually, each beginning with an initial physiological metric, such as blood glucose levels. Algorithms are then tasked with formulating treatment recommendations, encompassing aspects like meal size, insulin dosage, and exercise intensity. Following the implementation of these treatments, the virtual patient provides feedback, indicating how their physiological metrics have responded, akin to the responses one would expect from real-life patients. This feedback loop simulates real-world patient responses, offering valuable insights into the effectiveness of treatment strategies.
 
 1) We provide 30 virtual patients, modified from *the glucose-insulin system* [1], which is the open source part of the DMMS.R and T1DM simulators developed by The Epsilon Group and has been certified by the US FDA. The glucose-insulin system is an existing dynamic model of glucose ingestion and absorption, which is obtained through an extremely challenging triple tracer meal protocol by tracking the glucose conversion dynamic in the meals of 204 normal individuals. 
 
@@ -17,7 +19,7 @@ Utilizing the VirtualPatient simulator, one can access a "live" environment just
 
 ## Installation
 ### Install using pip
-Install the VirtualPatient package:
+Install the VirtualPatients package:
 ```
 pip install -e .
 ```
