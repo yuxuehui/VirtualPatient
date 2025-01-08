@@ -193,8 +193,8 @@ default_insulin:胰岛素量，用于在flag=1时控制默认的胰岛素输入�
 **另外需要根据模式不同改变parser.add_argument("-action_range", nargs='+', type=int, help=" ",default=[0,300])中的参数，用来指定动作空间取值范围**
 
 
-## Acknowledgement
-This project is an outcome of a joint work of [Web Intelligence Group](http://wi.hit.edu.cn/), Harbin Insititute Technology and [Dnurse: Prescription Digital Therapeutics Companies](https://www.dnurse.com/v2/en/).
+# Acknowledgement
+This project is an outcome of a joint work of [Web Intelligence Group](http://wi.hit.edu.cn/), Harbin Insititute Technology and [Dnurse](https://www.dnurse.com/v2/en/).
 
 # Reference
 [1] Dalla Man C, Rizza R A, Cobelli C. Meal simulation model of the glucose-insulin system[J]. IEEE Transactions on biomedical engineering, 2007, 54(10): 1740-1749.
