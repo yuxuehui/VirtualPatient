@@ -159,16 +159,17 @@ The intervention scheme is configured using five parameters: `info_phase_length`
 
 - **`default_insulin`**: Specifies the default insulin dosage, used when `flag=1`. Formatted as a float. Default value: `0.01`  
 
+Additionally, do not forget change the `action_range` according to different intervention schemes and the need of your control methods, which is used to specify the range of values for the action space.
 
-How to instantiate a virtual patient?
+You can use VirtualPatients to evaluate various types of control methods, such as supervised learning and reinforcement learning. Below is an example of a Python implementation using PPO:
+
 ```python
 from virtual_patient.envs.env_do_all_her_2reward import CBNEnv
 from stable_baselines3 import PPO
-env = CBNEnv.create(
+env = CBNEnv.create(    # initialise a environment
         info_phase_length=1440,
         action_range=args.action_range,
         vertex=args.vertex,
-        # reward_weight=args.reward_weight,
         reward_scale=args.reward_scale,
         n_env=1,
         patient_ID=args.patient_ID,
@@ -185,7 +186,8 @@ policy_kwargs = dict(
         optimizer_kwargs=optimizer_kwargs,
         optimizer_class=RMSpropTFLike
     )
-model = PPO("MlpPolicy",
+
+model = PPO("MlpPolicy", # initialise a PPO model
             env,
             n_steps=5,
             gae_lambda=0.95,
@@ -199,7 +201,8 @@ model = PPO("MlpPolicy",
             verbose=1,
             tensorboard_log='../logs',
             seed=94566)
-model.learn(
+
+model.learn(    # train
     total_timesteps=int(3e7),
     callback=TensorboardCallback())
 
