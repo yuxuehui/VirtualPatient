@@ -1,4 +1,4 @@
-![VirtualPatients](img/VirtualPatient_logo.jpg)
+![VirtualPatients](img/virtualpatient_logo.jpg)
 
 # VirtualPatients
 VirtualPatients provides diabetics smulators, which not only be built based on real-data of an online healthcare application, Dnurse, but also provide interpretable dynamic transitions of a variety of patients. VirtualPatients is a near-realistic patient simulator, which can be helpful for testing decision support system, recommendation system and interpretable reasoning in real-world application, in which contains uncertainty, noise and user heterogeneity. Our research aims to foster the development of intelligent decision support studies for online applications, promoting the advancement of robust, personalized algorithms.
