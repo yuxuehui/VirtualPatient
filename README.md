@@ -107,7 +107,7 @@ $$
 \Delta_{12} = -\textcolor[rgb]{0.5,0.32,0.43}{ksc} \cdot x_{12} + \textcolor[rgb]{0.5,0.32,0.43}{ksc} \cdot x_3
 $$
 
-The $\textcolor[rgb]{0.5,0.32,0.43}{\text{purple variables}}$ correspond to the personalised patient feature variables $\textbf{u}$ shown in Figure \ref{fig:human_system} (b). The feature variables $\textbf{u}$ for 39 patients were trained on the patients' offline data and are stored in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
+The $\textcolor[rgb]{0.5,0.32,0.43}{\text{purple variables}}$ correspond to the personalised patient feature variables $\textbf{u}$. The feature variables $\textbf{u}$ for 39 patients were trained on the patients' offline data and are stored in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
 
 <!-- ### Simulated Environment
 VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
