@@ -77,7 +77,7 @@ pip install -e .
 ## Usage for Reinforcement Learning
 
 How to instantiate a virtual patient?
-```
+```python
 from virtual_patient.envs.env_do_all_her_2reward import CBNEnv
 from stable_baselines3 import PPO
 env = CBNEnv.create(
