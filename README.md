@@ -49,6 +49,7 @@ VirtualPatients is a physics platform that enables users to design and test trea
 
 ## Differentiable Simulation Process
 
+![differential](img/virtualpatient_differential.png)
 
 <!-- ### Simulated Environment
 VirtualPatients simulates the users' blood glucoses changes, under the intervene of meal size, insulin dosage, and exercise intensity. 
