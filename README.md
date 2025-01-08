@@ -149,22 +149,15 @@ The intervention scheme is configured using five parameters: `info_phase_length`
   - `1`: Controls insulin only.  
   - `2`: Controls both carbohydrates and insulin.  
 
-- **`info_phase_length`**: Specifies the training step length.  
-  - Set to `2` when `flag=1`.  
-  - Set to `1440` for other `flag` values.  
+- **`info_phase_length`**: the number of time steps per day.  
+  - `info_phase_length = 3` when `flag=0`, three meals per day.  
+  - `info_phase_length = 1440` for other `flag` values. Short-acting insulin is infused once per minute, so 1440 insulin doses are required in a day. 
 
-- **`meal_time`**: Specifies meal times in a list with three elements (in minutes).  
-  - Default value: `[360, 660, 1080]`  
-  - Example: `[360, 660, 1080]`  
+- **`meal_time`**: Specifies meal times in a list with three elements (in minutes). Default value: `[360, 660, 1080]`  
 
-- **`default_meal`**: Specifies the default meal amount, used when `flag=0`.  
-  - Formatted as a list with three elements.  
-  - Default value: `[50, 50, 50]`  
-  - Example: `[50, 50, 50]`  
+- **`default_meal`**: Specifies the default meal size, used when `flag=0`. Formatted as a list with three elements. Default value: `[50, 50, 50]`  
 
-- **`default_insulin`**: Specifies the default insulin amount, used when `flag=1`.  
-  - Formatted as a float.  
-  - Default value: `0.01`  
+- **`default_insulin`**: Specifies the default insulin dosage, used when `flag=1`. Formatted as a float. Default value: `0.01`  
 
 
 How to instantiate a virtual patient?
