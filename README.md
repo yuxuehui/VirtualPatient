@@ -55,7 +55,7 @@ The operation of the VirtualPatients simulation is shown in the figure below:
 
 ![differential](img/virtualpatient_differential.png)
 
-The difference $\Delta$ is used to update the patient’s state $\textbf{x}$, calculated using the CGD step as shown in the following equation:
+The differential $\Delta$ is used to update the patient’s state $\textbf{x}$, calculated using the CGD step as shown in the following equation:
 
 $$
 \Delta_0 = -\textcolor[rgb]{0.27,0.4,0.37}{k_{max}} \cdot x_0 + CHO \cdot 1000
