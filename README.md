@@ -25,8 +25,14 @@ VirtualPatients is a biophysiology platform that allows users to design and eval
 💥 A unified framework that supports various state-of-the-art physiology solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
 ### In Silico Population
-- Embodies the biophysiological parameters of the FDA accepted in silico population
+- Embodies the biophysiological parameters of the FDA accepted in silico population. Personal biophysiological parameters 39 patients can be found in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
 - 19 adults, 10 adolescents, 10 children
+
+|                                | Adult | Adolescent | Child |
+|--------------------------------|-------|------------|-------|
+| **Ideal Dataset + Simulations** | 10    | 10         | 10    |
+| **Suboptimal Dataset + Simulations** | 9     |            |       |
+
 
 ### Basic User-Defined Simulation Input
 - Meal profiles (CHO amount, timing and duration of a meal)
@@ -109,7 +115,7 @@ $$
 \Delta_{12} = -\textcolor[rgb]{0.5,0.32,0.43}{ksc} \cdot x_{12} + \textcolor[rgb]{0.5,0.32,0.43}{ksc} \cdot x_3
 $$
 
-The $\textcolor[rgb]{0.5,0.32,0.43}{\text{purple variables}}$ correspond to the personalised learnable simulation parameters $\textbf{u}$. The feature variables $\textbf{u}$ for 39 patients were trained on the patients' offline data and are stored in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
+The $\textcolor[rgb]{0.5,0.32,0.43}{\text{purple variables}}$ correspond to the personalised learnable simulation parameters $\textbf{u}$. The personal parameters $\textbf{u}$ for 39 patients were trained on the patients' offline dataset and are stored in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
 
 ## How to Use VirtualPatients?
 ### Quick Installation
