@@ -25,7 +25,7 @@ VirtualPatients is a biophysiology platform that allows users to design and eval
 💥 A unified framework that supports various state-of-the-art physiology solvers, modeling a vast range of individual differences and biophysiological phenomena.
 
 ### In Silico Population
-- Embodies the biophysiological parameters of the FDA accepted in silico population. Personal biophysiological parameters 39 patients can be found in the file [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv).
+- Embodies the biophysiological parameters of the FDA accepted in silico population. Personal biophysiological parameters 39 patients can be found in [vpatient_params.csv](https://github.com/yuxuehui/VirtualPatient/blob/main/Data/vpatient_params.csv)
 - 19 adults, 10 adolescents, 10 children
 
 |                                | Adult | Adolescent | Child |
